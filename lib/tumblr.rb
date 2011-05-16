@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'curl'
-require 'tumblr'
 require 'tumblr/user'
 require 'tumblr/page'
 require 'tumblr/item'
