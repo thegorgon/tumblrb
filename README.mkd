@@ -59,6 +59,11 @@ Every Tumblr entry type is a separate class so you can do stuff like :
     ...
     end
 
+Known Issues
+------------
+
+There's no testing or documentation. I know, I'm on it.
+
 Anything else?
 ------------
 
