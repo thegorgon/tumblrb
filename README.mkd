@@ -6,12 +6,20 @@ A simple, easy to use ruby wrapper for the Tumblr API.
 Installation
 ------------
 
-Copy this code into your `vendor/plugins` directory. As of yet it's not gemified, but that'll come soon.
+Run 
+
+    gem install tumblrb
+
+Or add
+
+    gem 'tumblrb'
+    
+to your Gemfile
 
 Setup
 ------------
 
-Just add
+Add
 
     Tumblr.user = Tumblr::User.new 'email@email.com', 'password'
     Tumblr.blog = 'myblogname'
