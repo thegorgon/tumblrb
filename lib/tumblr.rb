@@ -1,3 +1,15 @@
+require 'tumblr'
+require 'tumblr/item'
+require 'tumblr/answer'
+require 'tumblr/audio'
+require 'tumblr/conversation'
+require 'tumblr/item'
+require 'tumblr/link'
+require 'tumblr/photo'
+require 'tumblr/quote'
+require 'tumblr/regular'
+require 'tumblr/video'
+
 module Tumblr
   mattr_accessor :user
   
