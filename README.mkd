@@ -54,4 +54,4 @@ Every Tumblr entry type is a separate class so you can do stuff like :
 Anything else?
 ------------
 
-Questions, requests, concerns? (http://www.thegorgonlab.com)
+Questions, requests, concerns? Find me at [the gorgon lab](http://www.thegorgonlab.com)
