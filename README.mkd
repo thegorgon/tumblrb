@@ -51,4 +51,7 @@ Every Tumblr entry type is a separate class so you can do stuff like :
     ...
     end
 
+Anything else?
+------------
+
 Questions, requests, concerns? (http://www.thegorgonlab.com)
