@@ -14,5 +14,24 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
   s.rubyforge_project = s.name
   s.summary = %q{Ruby wrapper for the Tumblr API}
+  s.files = [
+    "README.mkd",
+    "LICENSE.mkd",
+    "Gemfile",
+    "tumblrb.gemspec",
+    "lib/tumblr.rb",
+    "lib/tumblr/answer.rb",
+    "lib/tumblr/audio.rb",
+    "lib/tumblr/conversation.rb",
+    "lib/tumblr/item.rb",
+    "lib/tumblr/link.rb",
+    "lib/tumblr/page.rb",
+    "lib/tumblr/photo.rb",
+    "lib/tumblr/quote.rb",
+    "lib/tumblr/regular.rb",
+    "lib/tumblr/user.rb",
+    "lib/tumblr/version.rb",
+    "lib/tumblr/video.rb"
+  ]
   s.version = Tumblr::VERSION.dup
 end
