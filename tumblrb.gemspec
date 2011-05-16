@@ -7,12 +7,12 @@ Gem::Specification.new do |s|
   s.authors = ["Jesse Reiss"]
   s.description = %q{A Ruby wrapper for the Tumblr XML API}
   s.email = ['jessereiss@gmail.com']
-  s.homepage = 'https://github.com/thegorgon/tumblr'
-  s.name = 'tumblr'
+  s.homepage = 'https://github.com/thegorgon/tumblrb'
+  s.name = 'tumblrb'
   s.platform = Gem::Platform::RUBY
   s.require_paths = ['lib']
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
   s.rubyforge_project = s.name
   s.summary = %q{Ruby wrapper for the Tumblr API}
-  s.version = Twitter::VERSION.dup
+  s.version = Tumblr::VERSION.dup
 end
