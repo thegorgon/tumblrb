@@ -1,3 +1,5 @@
+require 'nokogiri'
+require 'curb'
 require 'tumblr'
 require 'tumblr/item'
 require 'tumblr/answer'
