@@ -1,0 +1,54 @@
+Tumblr API Wrapper
+====================
+
+A simple, easy to use ruby wrapper for the Tumblr API. 
+
+Installation
+------------
+
+Copy this code into your `vendor/plugins` directory. As of yet it's not gemified, but that'll come soon.
+
+Setup
+------------
+
+Just add
+
+    Tumblr.user = Tumblr::User.new 'email@email.com', 'password'
+    Tumblr.blog = 'myblogname'
+
+into your initialization
+
+Fetching 
+------------
+
+Just like `will_paginate` :
+
+    @posts = Tumblr::Item.paginate(:page => 1, :per_page => 20)
+    @posts.next_page => 1
+    @posts.previous_page => nil
+    @posts.each do |post|
+      =render :partial => "post", :object => post
+    end
+
+In addition to any paging parameters, `paginate` also accepts all the documented params from the [Tumblr API](http://www.tumblr.com/docs/en/api).
+
+You can also fetch the last post with
+
+    Tumblr::Item.first
+  
+Item Classes
+------------
+
+Every Tumblr entry type is a separate class so you can do stuff like :
+
+    case post
+    when Tumblr::Regular
+      # Display a regular post
+    when Tumblr::Quote
+      # Display a quote
+    when Tumblr::Photo
+      # Display a photo
+    ...
+    end
+
+Questions, requests, concerns? (http://www.thegorgonlab.com)
