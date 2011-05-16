@@ -12,7 +12,7 @@ Run
 
 Or add
 
-    gem 'tumblrb'
+    gem 'tumblrb', :require => "tumblr"
     
 to your Gemfile
 
