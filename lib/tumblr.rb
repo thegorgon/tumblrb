@@ -13,14 +13,20 @@ require 'tumblr/quote'
 require 'tumblr/regular'
 require 'tumblr/video'
 
-module Tumblr
-  mattr_accessor :user
-  
+module Tumblr  
   def self.blog=(blog)
     @blog = (blog =~ /\./) ? blog : "#{blog}.tumblr.com"
   end
   
   def self.blog
     @blog
+  end
+  
+  def self.user
+    @user
+  end
+  
+  def self.user=(value)
+    @user = value
   end
 end
