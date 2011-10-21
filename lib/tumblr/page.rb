@@ -14,6 +14,10 @@ module Tumblr
       (start / page_size).floor + 1      
     end
     
+    def success?
+      items.count > 0
+    end
+    
     def next_page
       (total - start) > page_size ? page + 1 : nil
     end

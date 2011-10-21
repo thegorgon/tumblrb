@@ -1,3 +1,4 @@
+require 'addressable/uri'
 require 'nokogiri'
 require 'curl'
 require 'tumblr/user'

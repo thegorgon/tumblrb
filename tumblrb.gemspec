@@ -2,8 +2,10 @@
 require File.expand_path('../lib/tumblr/version', __FILE__)
 
 Gem::Specification.new do |s|
+  s.add_dependency('activesupport', '~> 3.0')
   s.add_dependency('nokogiri', '~> 1.4.4')
   s.add_dependency('curb', '~> 0.7.15')
+  s.add_dependency('addressable')
   s.authors = ["Jesse Reiss"]
   s.description = %q{A Ruby wrapper for the Tumblr XML API}
   s.email = ['jessereiss@gmail.com']

@@ -36,7 +36,6 @@ module Tumblr
     end
     
     def self.raw(params={})
-      Rails.logger.info "tumblr : fetching url #{url(params)}"
       curl = Curl::Easy.perform(url(params))
       curl.body_str
     end
@@ -72,7 +71,15 @@ module Tumblr
 
     def self.url(params)
       url = "http://#{Tumblr.blog}/api/read"
-      url += "?#{params.to_query}" if params.keys.length > 0
+      if params.keys.length > 0
+        query = Addressable::URI.new
+        values = {}
+        params.each do |key, value|
+          values[key.to_s] = value.to_s
+        end
+        query.query_values = values
+        url += "?#{query.query}"
+      end 
       url
     end
 
