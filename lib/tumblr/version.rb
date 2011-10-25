@@ -1,4 +1,4 @@
 module Tumblr
   # The version of the gem
-  VERSION = '1.0.6'.freeze unless defined?(::Twitter::VERSION)
+  VERSION = '2.0.0'.freeze unless defined?(::Twitter::VERSION)
 end

@@ -1,33 +1,32 @@
 require 'addressable/uri'
-require 'nokogiri'
-require 'curl'
-require 'tumblr/user'
-require 'tumblr/page'
-require 'tumblr/item'
-require 'tumblr/answer'
-require 'tumblr/audio'
-require 'tumblr/conversation'
-require 'tumblr/item'
-require 'tumblr/link'
-require 'tumblr/photo'
-require 'tumblr/quote'
-require 'tumblr/regular'
-require 'tumblr/video'
+require 'digest/sha1'
+require 'active_support/core_ext/string'
+require 'active_support/inflections'
+require 'active_support/core_ext/array/extract_options'
+require "redis/objects"
+require "redis/set"
+require "redis/value"
+require "redis/list"
+require 'will_paginate/collection'
+require 'tumblr/config'
+require 'tumblr/query'
+require 'tumblr/api'
+require 'tumblr/object'
+require 'tumblr/blog'
+require 'tumblr/middleware/params'
+require 'tumblr/middleware/parsing'
 
-module Tumblr  
-  def self.blog=(blog)
-    @blog = (blog =~ /\./) ? blog : "#{blog}.tumblr.com"
+module Tumblr
+  def self.configure(&block)
+    @config = Config.new
+    block.call(@config)
   end
   
-  def self.blog
-    @blog
+  def self.config
+    @config
   end
   
-  def self.user
-    @user
-  end
-  
-  def self.user=(value)
-    @user = value
+  def self.load_config(path)
+    @config.load(path)
   end
 end

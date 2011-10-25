@@ -1,7 +1,14 @@
-Tumblr API Wrapper
+Tumblr Blogging with Redis
 ====================
 
-A simple, easy to use ruby wrapper for the Tumblr API. 
+A simple, blogging "platform" built on Tumblr and Redis.
+
+Reasoning
+------------
+
+Tumblr has a great interface for tagging, writing, and editing posts, but you shouldn't rely on it for being up all the time. You also shouldn't have to worry about Tumblr API integration or cacheing on your own. Tumblrb handles the Tumblr API integration, Redis cacheing, and fetching all with an easy to use interface.
+
+VOILA!
 
 Installation
 ------------
@@ -19,38 +26,54 @@ to your Gemfile
 Setup
 ------------
 
-Add
+Tumblrb Needs a little configuration to work properly. It needs to know your blog, your Tumblr API key, and how to connect to a running Redis server :
 
-    Tumblr.user = Tumblr::User.new 'email@email.com', 'password'
-    Tumblr.blog = 'myblogname'
+You can do that using the configure method :
 
-into your initialization
+    Tumblr.configure do |config|
+      config.blog = "thegorgonlab"
+      config.api_key = "1pLfP3eTlFjZi3trs2Medo78EwAaOLxMEAHUsRpfEoOS3nhbd8"
+      config.redis = {:host => "localhost", :post => 2811}
+    end
+    
+Redis configuration takes a string path to a configuration file, a hash of options, or a Redis instance itself. If you don't include a "." in your blog name it will add ".tumblr.com" to the end of what you provide. For information about API keys see the [Tumblr API documentation](http://www.tumblr.com/docs/en/api/v2)
 
-Fetching 
+Or if you like having all your configuration in a YAML file, you can put it all in a YAML file under the key `tumblr` and call :  
+  
+    Tumblr.load_config("/path/to/config.yml")
+
+Blog and Redis
+-----------
+
+Most interactions with the Tumblrb gem happen through the `Blog` class, which handles fetching from Tumblr and caching in Redis.
+
+To get started, fetch the posts from Tumblr and cache them in Redis, call `Blog.refresh!`. Every time you write a new post for your Tumblr blog, call this method again to keep Tumblrb up to date.
+
+Afterwards, to access your blog entries use an AREL type interface to access posts. 
+
+    Blog.tagged_with("technology").per_page(3).page(2).all
+  
+Fetching only happens when array methods are called in the chain.
+
+Loading posts directly
 ------------
 
-Just like `will_paginate` :
+You can also load posts directly using a similar interface :
 
-    @posts = Tumblr::Item.paginate(:page => 1, :per_page => 20)
-    @posts.next_page => 1
-    @posts.previous_page => nil
-    @posts.each do |post|
-      =render :partial => "post", :object => post
-    end
-
-In addition to any paging parameters, `paginate` also accepts all the documented params from the [Tumblr API](http://www.tumblr.com/docs/en/api).
-
-You can also fetch the last post with
-
-    Tumblr::Item.first
+    Post.page(1).per_page(20).tagged_with("technology").type("text").all
   
-Item Classes
+Or you can load 1 post by Tumblr id :
+ 
+    Post.find(tumblr_id)
+  
+  
+Post Classes
 ------------
 
 Every Tumblr entry type is a separate class so you can do stuff like :
 
     case post
-    when Tumblr::Regular
+    when Tumblr::Text
       # Display a regular post
     when Tumblr::Quote
       # Display a quote
@@ -59,10 +82,17 @@ Every Tumblr entry type is a separate class so you can do stuff like :
     ...
     end
 
+This makes custom display easier.
+
 Known Issues
 ------------
 
-There's no testing or documentation. I know, I'm on it.
+There's no testing or real documentation. I know, wanna help?
+
+This isn't the same...
+------------
+
+If you were using Tumblrb 1.0, this is completely different. I realize that. However, I didn't think anyone was using that gem and I think this is a better more holistic solution. Sorry for the inconvenience.
 
 Anything else?
 ------------

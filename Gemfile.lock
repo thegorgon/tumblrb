@@ -1,11 +1,14 @@
 PATH
   remote: .
   specs:
-    tumblrb (1.0.6)
+    tumblrb (1.1.0)
       activesupport (~> 3.0)
-      addressable
+      addressable (~> 2.2.0)
       curb (~> 0.7.15)
+      json (~> 1.6.0)
       nokogiri (~> 1.4.4)
+      redis-objects (~> 0.5.0)
+      will_paginate (~> 3.0.0)
 
 GEM
   remote: http://rubygems.org/
@@ -14,15 +17,30 @@ GEM
       multi_json (~> 1.0)
     addressable (2.2.6)
     curb (0.7.15)
+    faraday (0.7.5)
+      addressable (~> 2.2.6)
+      multipart-post (~> 1.1.3)
+      rack (>= 1.1.0, < 2)
+    i18n (0.6.0)
+    json (1.6.1)
     multi_json (1.0.3)
+    multipart-post (1.1.3)
     nokogiri (1.4.7)
+    rack (1.3.5)
+    redis (2.2.2)
+    redis-objects (0.5.2)
+      redis (>= 2.1.1)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 3.0)
+  activesupport (~> 3.1.1)
   addressable
-  curb (~> 0.7.15)
-  nokogiri (~> 1.4.4)
+  faraday (~> 0.7.5)
+  i18n (~> 0.6.0)
+  json (~> 1.6.0)
+  redis-objects
   tumblrb!
+  will_paginate
