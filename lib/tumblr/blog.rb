@@ -32,7 +32,6 @@ module Tumblr
           if posts.length > 0
             page = posts.next_page
             posts.each do |post|
-              puts "I'M ADDING #{post.slug} TO INDEX"
               index << post.slug
               post.commit
             end
@@ -57,6 +56,10 @@ module Tumblr
         value = Redis::Value.new("#{STORAGE_KEY}:#{slug}", Tumblr.config.redis)
         Tumblr::Object.unserialize(value.value)
       end
+      
+      def find(slug)
+        entry(slug)
+      end
 
       def tags
         Redis::Set.new("#{STORAGE_KEY}:tags", Tumblr.config.redis)
@@ -75,7 +78,7 @@ module Tumblr
       def query
         @query ||= Query.new(:page, :per_page, :tagged_with) do |params|
           if tag = params[:tagged_with]
-            slugs = Redis::Set.new("#{STORAGE_KEY}:tags:#{tag.downcase.underscore}", Tumblr.config.redis)
+            slugs = Redis::List.new("#{STORAGE_KEY}:tags:#{tag.downcase.underscore}", Tumblr.config.redis)
           else
             slugs = index
           end
