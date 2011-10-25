@@ -1,6 +1,7 @@
 require 'bundler'
 Bundler.require(:default)
 
+require 'faraday'
 require 'active_support/core_ext/string'
 require 'active_support/inflections'
 require 'active_support/core_ext/array/extract_options'
