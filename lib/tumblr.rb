@@ -1,5 +1,6 @@
-require 'addressable/uri'
-require 'digest/sha1'
+require 'bundler'
+Bundler.require(:default)
+
 require 'active_support/core_ext/string'
 require 'active_support/inflections'
 require 'active_support/core_ext/array/extract_options'
