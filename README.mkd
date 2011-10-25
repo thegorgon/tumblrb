@@ -33,7 +33,7 @@ You can do that using the configure method :
     Tumblr.configure do |config|
       config.blog = "thegorgonlab"
       config.api_key = "YOUR API KEY"
-      config.redis = {:host => "localhost", :post => 6379}
+      config.redis = {:host => "localhost", :port => 6379}
     end
     
 Redis configuration takes a string path to a configuration file, a hash of options, or a Redis instance itself. If you don't include a "." in your blog name it will add ".tumblr.com" to the end of what you provide. For information about API keys see the [Tumblr API documentation](http://www.tumblr.com/docs/en/api/v2)
