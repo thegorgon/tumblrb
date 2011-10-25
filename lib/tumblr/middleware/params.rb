@@ -1,9 +1,9 @@
 module Tumblr
-  class Params < Faraday::Middleware
+  class Params < ::Faraday::Middleware
     def call(env)
       params = env[:url].query_values || {}
       env[:url].query_values ||= {}
-      env[:url].query_values = { 'api_key' => Tumblr::Config.api_key }.merge!(params)
+      env[:url].query_values = { 'api_key' => Tumblr.config.api_key }.merge!(params)
       @app.call env
     end
   end

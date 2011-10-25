@@ -5,12 +5,12 @@ module Tumblr
     class << self
       def connection
         unless @connection
-          @connection = Faraday.new(:url => host) do |builder|
-            builder.use Faraday::Request::UrlEncoded
-            builder.use Faraday::Response::Logger
+          @connection = ::Faraday.new(:url => host) do |builder|
+            builder.use ::Faraday::Request::UrlEncoded
+            builder.use ::Faraday::Response::Logger
             builder.use Tumblr::Params
             builder.use Tumblr::Parsing
-            builder.adapter Faraday.default_adapter
+            builder.adapter ::Faraday.default_adapter
           end
         end
         @connection

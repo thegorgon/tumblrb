@@ -1,5 +1,5 @@
 module Tumblr
-  class Parsing < Faraday::Response::Middleware
+  class Parsing < ::Faraday::Response::Middleware
     def parse_body(body)
       case body
       when ''
