@@ -39,7 +39,7 @@ module Tumblr
     def commit
       super
       tags.each do |tag|
-        Redis::Set.new("#{Blog::STORAGE_KEY}:tags", Tumblr.config.redis) << tag
+        Redis::Set.new("#{Blog::STORAGE_KEY}:tags", Tumblr.config.redis) << tag.downcase
         Redis::List.new("#{Blog::STORAGE_KEY}:tags:#{tag.downcase.underscore}", Tumblr.config.redis) << slug
       end
     end
