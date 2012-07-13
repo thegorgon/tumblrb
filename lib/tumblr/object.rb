@@ -141,7 +141,7 @@ module Tumblr
       Digest::SHA1.hexdigest(to_json)
     end
     
-    def as_json
+    def as_json(*args)
       json = {}
       self.class.attributes.each do |key|
         json[key] = send(key)
